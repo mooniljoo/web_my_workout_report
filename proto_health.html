@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>prototype</title>
+        <link rel="stylesheet" type="text/css" href="css/vanillaCalendar.css">
+        <style>
+            body{
+                background: #f7f7f7;
+            }
+            .wrap{
+                max-width:1025px;
+                background:#fff;
+                margin-left:auto;
+                margin-right:auto;
+            }
+            .pop{
+                position: absolute;
+                display:none;
+                background:powderblue;
+            }
+        .calendar {
+            padding-left: 5%;
+            padding-right: 5%;
+            height: 100%;
+        }
+        .box{
+            border-top:1px solid #eee;
+            padding-top:50px;
+            padding-bottom:50px;
+        }
+        .box_title{
+            font-size:30px;
+        }
+
+        .list_group{
+            height:100px;
+            overflow: auto;
+
+        }
+        </style>
+    </head>
+    <body>
+        <section class="wrap">
+        <div>
+            <input type="text" id="date">
+            <input type="tel" placeholder="0">분
+        </div>
+        <div class="pop">
+            <div class="calendar">
+                <div class="v-cal">
+                    <div class="vcal-header">
+                        <span class="vcal-btn prev" data-calendar-toggle="previous"></span>
+                        <div class="vcal-header__label" data-calendar-label="month"></div>
+                        <span class="vcal-btn next" data-calendar-toggle="next"></span>
+                    </div>
+                    <div class="vcal-week">
+                        <span class="sun" style="color: #E9355C;">일</span> <span>월</span> <span>화</span><span>수</span> <span>목</span> <span>금</span> <span>토</span>
+                    </div>
+                    <div class="vcal-body" data-calendar-area="month"></div>
+                    </p>
+                </div>
+            </div>
+        </div>
+<div class="box">
+    <h3>
+        <input class="box_title" type="text" placeholder="운동명" onkeyup="findName(this);">
+        <div class="list_group" role="group">
+<div class="list">바이셉스 컬</div>
+<div class="list">랫풀 다운</div>
+<div class="list">랫풀 다운</div>
+<div class="list">랫풀 다운</div>
+<div class="list">랫풀 다운</div>
+<div class="list">랫풀 다운</div>
+        </div>
+    </h3>
+    <div class="row">
+        <input type="tel" placeholder="0">kg x<input type="tel" placeholder="0">rep
+    </div>
+    <div class="row">
+            <input type="tel" placeholder="0">kg x<input type="tel" placeholder="0">rep
+        </div>
+        <div class="row">
+                <input type="tel" placeholder="0">kg x<input type="tel" placeholder="0">rep
+            </div>
+</div>
+</section>
+<script src="js/vanillaCalendar.js"></script>
+<script>
+
+var arr = [
+            '랫풀다운','시티드로우','스쿼트','풀업', '데드리프트', '벤치프레스', '암컬', '덤벨로우', '바벨로우'
+]
+        window.addEventListener('load', function () {
+            document.getElementById('date').addEventListener('click',function(){
+                document.querySelector('.pop').style.display = 'block';
+            })
+
+            calendar.init({
+                disablePastDays: true
+            });
+
+            for (i = 0; i < document.querySelectorAll('.vcal-date').length; i++) {
+                styling_sunday(document.querySelectorAll('.vcal-date')[i]);
+            }
+            function styling_sunday(t) {
+                if (t.getAttribute('data-calendar-date').substr(0, 3) == 'Sun') {
+                    t.style.color = '#E9355C';
+                }
+            }
+
+            //$('.vcal-date--active').click(function () {
+            //})
+
+            listing();
+
+
+        })
+    function findName(el) {
+        var txtName = el.value.trim();
+        var result = arr[arr.indexOf(txtName)]
+        console.log(result)
+    }
+
+        function listing(){
+            for(i=0; i<9; i++){
+                var node = document.createElement('div')
+                node.classList.add('list')
+                node.innerHTML = arr[i]
+            }
+            console.log(node)
+            // document.querySelector('.list_group').innerHTML = listNodes
+        
+        }
+
+        
+</script>
+    </body>
+</html>

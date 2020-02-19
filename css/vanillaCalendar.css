@@ -1,0 +1,144 @@
+:root {
+    --vcal-bg-color: #fff;
+    --vcal-border-radius: 0;
+    --vcal-border-color: #e7e9ed;
+    --vcal-today-bg-color: #10989E;
+    --vcal-today-color: #fff;
+    --vcal-selected-bg-color: #E7E9ED;
+    --vcal-selected-color: #333;
+}
+
+.v-cal *, .v-cal *:before, .v-cal *:after {
+    box-sizing: border-box;
+}
+
+.v-cal {
+    width: 100%;
+}
+
+    .v-cal .vcal-btn {
+        -moz-user-select: none;
+        -ms-user-select: none;
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 22px;
+        height: 22px;
+        border: 0;
+        color: inherit;
+        cursor: pointer;
+        font: inherit;
+        line-height: normal;
+        outline: none;
+        overflow: visible;
+        padding: 0;
+        text-align: center;
+    }
+
+.vcal-btn.next {
+    background-image: url('../img/calendar_ico_next_arrow.png');
+}
+
+.vcal-btn.prev {
+    background-image: url('../img/calendar_ico_prev_arrow.png');
+}
+
+.v-cal .vcal-header {
+    align-items: center;
+    display: flex;
+    padding: 1.2rem 1.4rem;
+}
+
+    .v-cal .vcal-header svg {
+        fill: #006888;
+    }
+
+.v-cal .vcal-header__label {
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    font-size: 24px;
+}
+
+.v-cal .vcal-week {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: .5em 0 10px;
+    border-bottom: 1px solid #eee;
+}
+
+    .v-cal .vcal-week span {
+        flex-direction: column;
+        flex: 1 1 14.28%;
+        font-size: 15px;
+        font-weight: bold;
+        /*max-width: 14.28%;*/
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+.v-cal .vcal-body {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.v-cal .vcal-date {
+    position: relative;
+    align-items: center;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 0 0 14.28%;
+    max-width: 14.28%;
+    margin: .7em 0;
+}
+.v-cal .vcal_date_from span:nth-child(1) {
+    color: #fff;
+    height: 2em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1em 0 0 1em;
+    background: #005DFF;
+    cursor: pointer;
+}
+.v-cal .vcal_date_to span:nth-child(1) {
+    color: #fff;
+    height: 2em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 1em 1em 0;
+    background: #005DFF;
+    cursor: pointer;
+}
+.v-cal .vcal_date_between {
+    background: #005DFF;
+}
+
+.v-cal .vcal-date--selected {
+    /*background-color: #E9355C;
+    color:#fff;*/
+}
+    .v-cal .vcal-date--selected span {
+        cursor: pointer;
+        position: absolute;
+        background: red;
+        border-radius: 50%;
+        width: 2em;
+        height: 2em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+
+.v-cal .vcal-date--disabled {
+    opacity: 0.5;
+}
+
+.v-cal .vcal-date--active {
+    cursor:pointer;
+}
