@@ -1,0 +1,29 @@
+$black: #333;
+$blue: #7285eb;
+$red: #d6453e;
+$yellow: #f5b131;
+$green: #29d634;
+
+.SetterNav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  background-color: #ffffff;
+
+  & > .Weight-Setter {
+    display: flex;
+    flex: 1;
+  }
+  input {
+    border: none;
+    font-size: 2rem;
+    text-align: center;
+  }
+  .Weight-Setter > div {
+    flex: 1;
+    justify-content: space-between;
+  }
+}
