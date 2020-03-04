@@ -6,9 +6,9 @@
 2. DB화
 3. 이전의 본인기록과 현재기록 비교 기능
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was made with [Create React App](https://github.com/facebook/create-react-app).
 
-## 사용가능한 명령어
+## 실행
 
 이 디렉토리에서 아래 명령어를 입력한다.
 
