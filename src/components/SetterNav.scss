@@ -5,7 +5,7 @@ $yellow: #f5b131;
 $green: #29d634;
 
 .SetterNav {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
@@ -13,17 +13,38 @@ $green: #29d634;
   display: flex;
   background-color: #ffffff;
 
-  & > .Weight-Setter {
+  & > .Setter {
     display: flex;
     flex: 1;
   }
   input {
+    width:100%;
     border: none;
     font-size: 2rem;
     text-align: center;
   }
-  .Weight-Setter > div {
+  .Setter > div {
     flex: 1;
-    justify-content: space-between;
+  }
+}
+
+.Button-Count-{
+  &Up, &Down{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size:2rem;
+    font-weight: bold;
+    cursor: pointer;
+
+    
+    background: $blue;
+    &:hover {
+      background: lighten($blue, 10%);
+    }
+    &:active {
+      background: darken($blue, 10%);
+    }
   }
 }

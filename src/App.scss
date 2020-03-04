@@ -9,11 +9,16 @@ $green: #29d634;
 }
 .MWR-wrapper {
   max-width: 1024px;
-  width: 100%;
-  height: 100%;
 
   margin-left: auto;
   margin-right: auto;
 
   background: #fff;
+}
+
+@media (max-width:1024px){
+    .MWR-wrapper {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
 }
