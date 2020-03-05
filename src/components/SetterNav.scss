@@ -18,27 +18,29 @@ $green: #29d634;
     flex: 1;
   }
   input {
-    width:100%;
+    width: 100%;
     border: none;
     font-size: 2rem;
     text-align: center;
   }
   .Setter > div {
     flex: 1;
+    display: flex;
+    align-items: center;
   }
 }
 
-.Button-Count-{
-  &Up, &Down{
+.Button-Count- {
+  &Up,
+  &Down {
     display: flex;
     justify-content: center;
     align-items: center;
 
-    font-size:2rem;
+    font-size: 2rem;
     font-weight: bold;
     cursor: pointer;
 
-    
     background: $blue;
     &:hover {
       background: lighten($blue, 10%);

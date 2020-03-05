@@ -15,9 +15,17 @@ $green: #29d634;
 
   background: #fff;
 }
+.Button-confirm {
+  cursor: pointer;
 
-@media (max-width:1024px){
-    .MWR-wrapper {
+  background: #ffffff00;
+  &:hover {
+    background: #00ff62;
+  }
+}
+
+@media (max-width: 1024px) {
+  .MWR-wrapper {
     margin-left: 5%;
     margin-right: 5%;
   }
