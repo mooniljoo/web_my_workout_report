@@ -2,18 +2,20 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./WorkoutItem.scss";
 import { MdAdd, MdDelete } from "react-icons/md";
-import Button from "./Button";
+import SetsContainer from "../containers/SetsContainer";
+import { onAddSet } from "../modules/sets";
 
-function WorkoutItem({ workout, buttons, onRemove }) {
+function WorkoutItem({ workout, sets, onRemove }) {
   const onClickRemove = () => {
     onRemove(workout.id);
     console.log("This WorkoutItem Element has deleted.");
   };
 
-  const buttons1 = useSelector(state => state.buttons);
+  // const buttons1 = useSelector(state => state.buttons);
   const dispatch = useDispatch();
 
-  //const onClickAddReps = text => dispatch(onAddReps());
+  const onClickAddSet = () => dispatch(onAddSet());
+  const _sets = useSelector(state => state._sets);
 
   return (
     <>
@@ -30,17 +32,10 @@ function WorkoutItem({ workout, buttons, onRemove }) {
           <MdDelete />
         </span>
         <div className="Buttons">
-          {buttons1.map(button => (
-            <Button
-              key={workout.id}
-              id={workout.id}
-              // onToggle={onToggle}
-              //onRemove={onRemove}
-            />
-          ))}
-          <div className="addButton" onClick="onClickAddReps">
-            <MdAdd />
-          </div>
+          <SetsContainer _sets={_sets} />
+        </div>
+        <div className="addButton" onClick={onClickAddSet}>
+          <MdAdd />
         </div>
       </div>
     </>

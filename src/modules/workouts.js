@@ -2,9 +2,6 @@ const ADD_WORKOUT = "workouts/ADD_WORKOUT";
 const TOGGLE_WORKOUT = "workouts/TOGGLE_WORKOUT";
 const REMOVE_WORKOUT = "workouts/REMOVE_WORKOUT";
 
-const ADD_SET = "workouts/ADD_SET";
-const REMOVE_SET = "workouts/REMOVE_SET";
-
 let nextId = 1;
 export const addWorkout = text => ({
   type: ADD_WORKOUT,
@@ -23,16 +20,6 @@ export const toggleWorkout = id => ({
 });
 
 export const removeWorkout = id => ({
-  type: REMOVE_WORKOUT,
-  id
-});
-
-export const addSet = id => ({
-  type: TOGGLE_WORKOUT,
-  id
-});
-
-export const removeSet = id => ({
   type: REMOVE_WORKOUT,
   id
 });

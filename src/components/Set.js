@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./Button.scss";
+import "./Set.scss";
 
-function Button() {
+function Set() {
   const [repsCount, setRepsCount] = useState(0);
 
   const onincreaseReps = () => {
@@ -17,4 +17,4 @@ function Button() {
   );
 }
 
-export default Button;
+export default Set;

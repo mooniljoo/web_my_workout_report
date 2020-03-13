@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { MdAddBox } from "react-icons/md";
 import WorkoutList from "./WorkoutList";
 
@@ -10,6 +11,34 @@ function Workouts({ workouts, onCreate, onToggle, onRemove }) {
     onCreate(text);
     setText(""); // 인풋 초기화
   };
+
+  // const buttons1 = useSelector(state => state.buttons);
+  // const dispatch = useDispatch();
+
+  //   const initialState = {
+  //     keyword: { text },
+  //     WorkoutData: [
+  //       {
+  //         name: "Biceps Curl"
+  //       },
+  //       {
+  //         name: "Triceps Curl"
+  //       }
+  //     ]
+  //   };
+
+  //   const mapToComponents = data => {
+  //     data.sort();
+  //     data = data.filter(concat => {
+  //       return (
+  //         concat.name.toLowerCase().indexOf(initialState.keyword.toLowerCase()) >
+  //         -1
+  //       );
+  //     });
+  //     return data.map((contact, i) => {
+  //       return <WorkoutInfo workout={workout} key={i} />;
+  //     });
+  //   };
 
   return (
     <div>
