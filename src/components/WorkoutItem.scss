@@ -1,3 +1,6 @@
+$black: #333;
+$blue: #1c7ed6;
+
 .Workout {
   width: 100%;
   margin-bottom: 10px;
@@ -21,4 +24,39 @@
 }
 .Button-del {
   cursor: pointer;
+}
+
+.addButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  font-size: 2rem;
+  background-color: #fefefe;
+  border-radius: 50%;
+  border: 3px dashed #efefef;
+  cursor: pointer;
+  &:hover {
+    background: #eee;
+    border: 3px solid #eee;
+  }
+  &:active {
+    border: none;
+    background: darken(#eee, 5%);
+    border: 3px solid #eee;
+  }
+}
+
+.Remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #dee2e6;
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0;
+  &:hover {
+    color: #ff6b6b;
+  }
 }

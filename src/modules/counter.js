@@ -10,7 +10,7 @@ export const decrease = () => ({ type: DECREASE });
 
 const iniitialState = {
   number: 0,
-  diff: 1,
+  diff: 1.25,
   unit: "kg"
 };
 

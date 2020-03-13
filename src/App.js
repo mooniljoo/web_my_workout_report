@@ -1,13 +1,11 @@
 import React from "react";
 import "./App.scss";
-import CounterContainer from "./containers/CounterContainer";
-import WorkoutsContainer from "./containers/WorkoutsContainer";
+import RoutineContainer from "./containers/RoutineContainer";
 
 function App() {
   return (
     <div>
-      <WorkoutsContainer />
-      <CounterContainer />
+      <RoutineContainer />
     </div>
   );
 }

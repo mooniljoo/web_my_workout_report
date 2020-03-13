@@ -1,8 +1,4 @@
-$black: #333;
-$blue: #7285eb;
-$red: #d6453e;
-$yellow: #f5b131;
-$green: #29d634;
+$gray: #ccc;
 
 .SetterNav {
   position: fixed;
@@ -41,12 +37,12 @@ $green: #29d634;
     font-weight: bold;
     cursor: pointer;
 
-    background: $blue;
+    background: $gray;
     &:hover {
-      background: lighten($blue, 10%);
+      background: lighten($gray, 10%);
     }
     &:active {
-      background: darken($blue, 10%);
+      background: darken($gray, 10%);
     }
   }
 }

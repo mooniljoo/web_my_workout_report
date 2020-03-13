@@ -24,6 +24,13 @@ $green: #29d634;
   }
 }
 
+//input 숫자 조절 버튼 삭제
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 @media (max-width: 1024px) {
   .MWR-wrapper {
     margin-left: 5%;
