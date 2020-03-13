@@ -1,20 +1,20 @@
 import React from "react";
 import Button from "./Button";
-import "./Workout.scss";
+import "./WorkoutItem.scss";
 
-function Workout({ workout, index, onToggle, onRemove }) {
+function WorkoutItem({ workout, index, onToggle, onRemove }) {
   const deleteElem = () => {
-    console.log("This Workout Element has deleted.");
+    console.log("This WorkoutItem Element has deleted.");
   };
   return (
     <>
-      <div className="Workout">
+      <div className="WorkoutItem">
         <span className="title">{workout}</span>
         <span>&nbsp;/&nbsp;</span>
         <span className="desc">{workout}</span>
         <span
           role="img"
-          aria-label="Delete Workout"
+          aria-label="Delete WorkoutItem"
           className="Button-del"
           onClick={deleteElem}
         >
@@ -32,4 +32,4 @@ function Workout({ workout, index, onToggle, onRemove }) {
   );
 }
 
-export default Workout;
+export default WorkoutItem;
