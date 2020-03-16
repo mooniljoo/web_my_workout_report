@@ -1,6 +1,7 @@
 const ADD_WORKOUT = "workouts/ADD_WORKOUT";
 const TOGGLE_WORKOUT = "workouts/TOGGLE_WORKOUT";
 const REMOVE_WORKOUT = "workouts/REMOVE_WORKOUT";
+const ADD_SET = "workouts/ADD_SET";
 
 // let nextId = 1;
 
@@ -9,7 +10,7 @@ const DATE = Date.now().toString();
 const ID = "id";
 export const addWorkout = text => ({
   type: ADD_WORKOUT,
-  [ID]: {
+  ID: {
     id: ID,
     title: DATE,
     desc: "5x5",
@@ -68,9 +69,14 @@ export const toggleWorkout = id => ({
   id
 });
 
-export const removeWorkout = id => ({
+export const removeWorkout = name => ({
   type: REMOVE_WORKOUT,
-  id
+  name
+});
+
+export const addSet = name => ({
+  type: ADD_SET,
+  name
 });
 
 const initialState = [];
@@ -78,19 +84,23 @@ const initialState = [];
 export default function workouts(state = initialState, action) {
   switch (action.type) {
     case ADD_WORKOUT:
-      // console.log(action.workoutItems);
-      // console.log(state.id.workoutItems);
-      // console.log(state.id.workoutItems.concat(action.workoutItems));
-      // return state.workouts.concat(action.workouts);
-      console.log("action", action);
-      console.log("state", state);
+      // console.log("action", action);
+      // console.log("state", state);
       return state.concat(action);
     case TOGGLE_WORKOUT:
       return state.map(workout =>
         workout.id === action.id ? { ...workout, done: !workout.done } : workout
       );
     case REMOVE_WORKOUT:
-      return state.filter(workout => workout.id !== action.id);
+      console.log("action", action);
+      console.log("state", state);
+      console.log(
+        "state",
+        state[0].ID.workoutItems.filter(name => name !== action.name)
+      );
+      return state;
+    case ADD_SET:
+      return state.concat(action);
     default:
       return state;
   }

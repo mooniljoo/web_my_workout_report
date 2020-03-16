@@ -18,8 +18,11 @@ function CountDesc({ count }) {
 function WorkoutItem({ workoutItem, onRemove }) {
   //console.log(workoutItem);
   const onClickRemove = () => {
-    onRemove(workoutItem.id);
-    console.log("This WorkoutItem Element has deleted.");
+    onRemove(workoutItem.name);
+    console.log(`'${workoutItem.name}' has deleted.`);
+  };
+  const onClickAddSets = () => {
+    console.log("All right! One more Set!");
   };
 
   const counts = workoutItem.counts;
@@ -50,7 +53,7 @@ function WorkoutItem({ workoutItem, onRemove }) {
           <div className="Buttons">
             {/* <SetsContainer workoutItem={workoutItem} /> */}
           </div>
-          <div className="addButton">
+          <div className="addButton" onClick={onClickAddSets}>
             <MdAdd />
           </div>
         </div>
