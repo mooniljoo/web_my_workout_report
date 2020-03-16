@@ -1,10 +1,11 @@
 import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Workouts from "../components/Workouts";
+import WorkoutList from "../components/WorkoutList";
 import { addWorkout, toggleWorkout, removeWorkout } from "../modules/workouts";
 
-function WorkoutsContainer() {
-  const workouts = useSelector(state => state.workouts);
+function WorkoutListContainer({ workout }) {
+  const workoutItems = workout.id.workoutItems;
+
   const dispatch = useDispatch();
 
   const onCreate = text => dispatch(addWorkout(text));
@@ -12,8 +13,8 @@ function WorkoutsContainer() {
   const onRemove = id => dispatch(removeWorkout(id));
 
   return (
-    <Workouts
-      workouts={workouts}
+    <WorkoutList
+      workoutItems={workoutItems}
       onCreate={onCreate}
       onToggle={onToggle}
       onRemove={onRemove}
@@ -21,4 +22,4 @@ function WorkoutsContainer() {
   );
 }
 
-export default WorkoutsContainer;
+export default WorkoutListContainer;

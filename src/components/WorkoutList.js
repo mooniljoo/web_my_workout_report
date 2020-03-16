@@ -1,13 +1,12 @@
 import React from "react";
 import WorkoutItem from "./WorkoutItem";
-function WorkoutList({ workouts, onToggle, onRemove }) {
+function WorkoutList({ workoutItems, onToggle, onRemove }) {
   return (
     <ul>
-      {workouts.map(workout => (
+      {workoutItems.map((workoutItem, index) => (
         <WorkoutItem
-          key={workout.id}
-          id={workout.id}
-          workout={workout}
+          key={index}
+          workoutItem={workoutItem}
           onToggle={onToggle}
           onRemove={onRemove}
         />

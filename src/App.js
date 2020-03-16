@@ -4,8 +4,10 @@ import RoutineContainer from "./containers/RoutineContainer";
 
 function App() {
   return (
-    <div>
-      <RoutineContainer />
+    <div className="App">
+      <div className="MWR-wrapper">
+        <RoutineContainer />
+      </div>
     </div>
   );
 }

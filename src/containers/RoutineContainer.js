@@ -1,12 +1,15 @@
 import React from "react";
 import RoutineHead from "../components/RoutineHead";
 import RoutineItem from "../components/RoutineItem";
+import { useSelector } from "react-redux";
 
 function RoutineContainer() {
+  const workouts = useSelector(state => state.workouts);
+  console.log(workouts);
   return (
     <div>
-      <RoutineHead />
-      <RoutineItem />
+      <RoutineHead workouts={workouts} />
+      <RoutineItem workouts={workouts} />
     </div>
   );
 }

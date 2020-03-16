@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import CreateWorkoutItem from "./CreateWorkoutItem";
 //import { useRoutineState } from "../RoutineContext";
 
 const RoutineHeadBlock = styled.div`
@@ -8,7 +9,7 @@ const RoutineHeadBlock = styled.div`
   padding-right: 32px;
   padding-bottom: 24px;
   border-bottom: 1px solid #e9ecef;
-  h1 {
+  h2 {
     margin: 0;
     font-size: 36px;
     color: #343a40;
@@ -26,10 +27,9 @@ const RoutineHeadBlock = styled.div`
   }
 `;
 
-function RoutineHead() {
+function RoutineHead({ onCreate, workouts }) {
   //const todos = useRoutineState();
   //const undoneTasks = todos.filter(todo => !todo.done);
-
   const today = new Date();
   const dateString = today.toLocaleDateString("ko-KR", {
     year: "numeric",
@@ -40,9 +40,14 @@ function RoutineHead() {
 
   return (
     <RoutineHeadBlock>
-      <h1>{dateString}</h1>
-      <div className="day">{dayName}</div>
+      <h2>
+        {dateString}
+        <span className="day">{dayName}</span>
+      </h2>
+      <h2>{workouts.title}</h2>
+      <h2>{workouts.desc}</h2>
       {/* <div className="tasks-left">할 일 {undoneTasks.length}개 남음</div> */}
+      <CreateWorkoutItem onCreate={onCreate} />
     </RoutineHeadBlock>
   );
 }

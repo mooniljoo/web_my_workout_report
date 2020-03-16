@@ -1,41 +1,58 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
 import "./WorkoutItem.scss";
 import { MdAdd, MdDelete } from "react-icons/md";
 import SetsContainer from "../containers/SetsContainer";
 import { onAddSet } from "../modules/sets";
 
-function WorkoutItem({ workout, sets, onRemove }) {
+function CountDesc({ count }) {
+  return (
+    <span>
+      <br />
+      <span>{count.set}</span>set
+      <span>{count.weight}</span>kg
+      <span>{count.reps}</span>reps
+    </span>
+  );
+}
+
+function WorkoutItem({ workoutItem, onRemove }) {
+  //console.log(workoutItem);
   const onClickRemove = () => {
-    onRemove(workout.id);
+    onRemove(workoutItem.id);
     console.log("This WorkoutItem Element has deleted.");
   };
 
-  // const buttons1 = useSelector(state => state.buttons);
-  const dispatch = useDispatch();
-
-  const onClickAddSet = () => dispatch(onAddSet());
-  const _sets = useSelector(state => state._sets);
+  const counts = workoutItem.counts;
 
   return (
     <>
       <div className="WorkoutItem">
-        <span className="title">{workout.text}</span>
-        <span>&nbsp;/&nbsp;</span>
-        <span className="desc">{workout.text}</span>
-        <span
-          role="img"
-          aria-label="Delete WorkoutItem"
-          className="Button-del"
-          onClick={onClickRemove}
-        >
-          <MdDelete />
-        </span>
-        <div className="Buttons">
-          <SetsContainer _sets={_sets} />
+        <div className="WorkoutItemHead">
+          <span className="name">
+            <b>{workoutItem.name}</b>
+          </span>
+          <span>&nbsp;/&nbsp;</span>
+          <span className="counts">
+            {counts.map((count, index) => (
+              <CountDesc key={index} count={count} />
+            ))}
+          </span>
+          <span
+            role="img"
+            aria-label="Delete WorkoutItem"
+            className="Button-del"
+            onClick={onClickRemove}
+          >
+            <MdDelete />
+          </span>
         </div>
-        <div className="addButton" onClick={onClickAddSet}>
-          <MdAdd />
+        <div className="WorkoutItemButtonsBlock">
+          <div className="Buttons">
+            {/* <SetsContainer workoutItem={workoutItem} /> */}
+          </div>
+          <div className="addButton">
+            <MdAdd />
+          </div>
         </div>
       </div>
     </>
@@ -43,14 +60,3 @@ function WorkoutItem({ workout, sets, onRemove }) {
 }
 
 export default React.memo(WorkoutItem);
-
-// const WorkoutItem = React.memo(function WorkoutItem({ workout, onToggle }) {
-//   return (
-//     <li
-//       style={{ textDecoration: workout.done ? "line-through" : "none" }}
-//       onClick={() => onToggle(workout.id)}
-//     >
-//       {workout.text}
-//     </li>
-//   );
-// });
