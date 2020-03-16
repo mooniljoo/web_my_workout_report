@@ -4,7 +4,7 @@ import WorkoutList from "../components/WorkoutList";
 import { addWorkout, toggleWorkout, removeWorkout } from "../modules/workouts";
 
 function WorkoutListContainer({ workout }) {
-  const workoutItems = workout.ID.workoutItems;
+  const workoutItems = workout;
 
   const dispatch = useDispatch();
 
@@ -13,12 +13,13 @@ function WorkoutListContainer({ workout }) {
   const onRemove = name => dispatch(removeWorkout(name));
 
   return (
-    <WorkoutList
-      workoutItems={workoutItems}
-      onCreate={onCreate}
-      onToggle={onToggle}
-      onRemove={onRemove}
-    />
+    <div></div>
+    // <WorkoutList
+    //   workoutItems={workoutItems}
+    //   onCreate={onCreate}
+    //   onToggle={onToggle}
+    //   onRemove={onRemove}
+    // />
   );
 }
 

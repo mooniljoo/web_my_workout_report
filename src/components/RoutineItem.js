@@ -11,7 +11,7 @@ const TodoListBlock = styled.div`
 function RoutineItem({ workouts }) {
   return (
     <TodoListBlock>
-      {workouts.map((workout, index) => (
+      {Object.values(workouts).map((workout, index) => (
         <WorkoutListContainer key={index} workout={workout} />
       ))}
       <CounterContainer />

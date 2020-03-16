@@ -2,66 +2,32 @@ const ADD_WORKOUT = "workouts/ADD_WORKOUT";
 const TOGGLE_WORKOUT = "workouts/TOGGLE_WORKOUT";
 const REMOVE_WORKOUT = "workouts/REMOVE_WORKOUT";
 const ADD_SET = "workouts/ADD_SET";
+const ADD_ROUTINE = "workouts/ADD_ROUTINE"
 
 // let nextId = 1;
 
 // const ID = Date.now().toString();
 const DATE = Date.now().toString();
 const ID = "id";
-export const addWorkout = text => ({
-  type: ADD_WORKOUT,
+export const addRoutine = id => ({
+  type: ADD_ROUTINE,
   ID: {
     id: ID,
     title: DATE,
     desc: "5x5",
     createdAt: DATE,
-    workoutItems: [
-      {
-        name: text,
-        counts: [{ set: 1, reps: 10, weight: 10 }]
-      }
-    ]
+    workoutItems: {
+    }
+  },
+})
+export const addWorkout = text => ({
+  type: ADD_WORKOUT,
+  [text]:{
+    1:{
+      reps:1,
+      weight:1
+    }
   }
-
-  // [ID]: {
-  //   id: ID,
-  //   title: DATE,
-  //   desc: "5x5",
-  //   createdAt: DATE,
-  //   workoutItems: [
-  //     {
-  //       name: text,
-  //       counts: [
-  //         { set: 1, reps: 10, weight: 10 },
-  //         { set: 2, reps: 10, weight: 50 },
-  //         { set: 3, reps: 10, weight: 70 },
-  //         { set: 4, reps: 5, weight: 80 },
-  //         { set: 5, reps: 5, weight: 90 },
-  //         { set: 6, reps: 5, weight: 100 },
-  //         { set: 7, reps: 5, weight: 100 }
-  //       ]
-  //     },
-  //     {
-  //       name: "ConventionalDeadLift",
-  //       counts: [
-  //         { set: 1, reps: 10, weight: 10 },
-  //         { set: 2, reps: 10, weight: 50 },
-  //         { set: 3, reps: 10, weight: 70 },
-  //         { set: 4, reps: 5, weight: 80 },
-  //         { set: 5, reps: 5, weight: 90 },
-  //         { set: 6, reps: 5, weight: 100 },
-  //         { set: 7, reps: 5, weight: 100 }
-  //       ]
-  //     },
-  //     {
-  //       name: "OverHeadPress",
-  //       counts: [
-  //         { set: 1, reps: 10, weight: 10 },
-  //         { set: 2, reps: 10, weight: 10 }
-  //       ]
-  //     }
-  //   ]
-  // }
 });
 
 export const toggleWorkout = id => ({
@@ -79,18 +45,25 @@ export const addSet = name => ({
   name
 });
 
-const initialState = [];
+const initialState = {};
 
 export default function workouts(state = initialState, action) {
   switch (action.type) {
+    case ADD_ROUTINE:
+      console.log("ADD ROUTINE");
+      console.log("state", state);
+      return Object.assign(state,action);
+
     case ADD_WORKOUT:
-      // console.log("action", action);
-      // console.log("state", state);
-      return state.concat(action);
-    case TOGGLE_WORKOUT:
-      return state.map(workout =>
-        workout.id === action.id ? { ...workout, done: !workout.done } : workout
-      );
+      console.log("ADD_WORKOUT");
+      console.log("action", action);
+      console.log("state", state);
+      return Object.assign(state.ID.workoutItems,action)      
+
+    case ADD_SET:
+      console.log("ADD_SETORKOUT");
+      return Object.assign(state.ID.workoutItems.workoutItemName,action)
+
     case REMOVE_WORKOUT:
       console.log("action", action);
       console.log("state", state);
@@ -99,8 +72,7 @@ export default function workouts(state = initialState, action) {
         state[0].ID.workoutItems.filter(name => name !== action.name)
       );
       return state;
-    case ADD_SET:
-      return state.concat(action);
+
     default:
       return state;
   }
