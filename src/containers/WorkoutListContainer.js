@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import WorkoutList from "../components/WorkoutList";
 import { addWorkout, toggleWorkout, removeWorkout } from "../modules/workouts";
 
-function WorkoutListContainer({ workout }) {
+function WorkoutListContainer({ workout, id }) {
   const workoutItems = workout;
 
   const dispatch = useDispatch();

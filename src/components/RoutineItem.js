@@ -8,11 +8,11 @@ const TodoListBlock = styled.div`
   padding-bottom: 48px;
   overflow-y: auto;
 `;
-function RoutineItem({ workouts }) {
+function RoutineItem({ workouts, id }) {
   return (
     <TodoListBlock>
       {Object.values(workouts).map((workout, index) => (
-        <WorkoutListContainer key={index} workout={workout} />
+        <WorkoutListContainer id={id} key={index} workout={workout} />
       ))}
       <CounterContainer />
     </TodoListBlock>

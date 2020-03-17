@@ -4,23 +4,24 @@ import { MdAddBox } from "react-icons/md";
 import styled from "styled-components";
 import { addWorkout } from "../modules/workouts";
 
-function CreateWorkoutItem() {
+function CreateWorkoutItem({ id }) {
   const [text, setText] = useState("");
 
   //디스패치
   const dispatch = useDispatch();
 
-  const onCreate = text => dispatch(addWorkout(text));
+  const onCreate = (id, text) => dispatch(addWorkout(id, text));
 
   const onChange = e => setText(e.target.value);
   const onSubmit = e => {
     e.preventDefault(); // Submit 이벤트 발생했을 때 새로고침 방지
-    onCreate(text);
+    onCreate(id, text);
     setText(""); // 인풋 초기화
   };
   return (
     <form onSubmit={onSubmit}>
       <Input
+        id={id}
         value={text}
         placeholder="Input your Item"
         onChange={onChange}

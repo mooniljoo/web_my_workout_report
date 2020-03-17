@@ -1,31 +1,36 @@
-const ADD_WORKOUT = "workouts/ADD_WORKOUT";
+//액션 타입 정의
+const ADD_ROUTINE = "workouts/ADD_ROUTINE"; //루틴추가
+const ADD_WORKOUT = "workouts/ADD_WORKOUT"; //운동추가
+const ADD_SET = "workouts/ADD_SET"; //세트추가
+const REMOVE_WORKOUT = "workouts/REMOVE_WORKOUT"; //운동삭제
 const TOGGLE_WORKOUT = "workouts/TOGGLE_WORKOUT";
-const REMOVE_WORKOUT = "workouts/REMOVE_WORKOUT";
-const ADD_SET = "workouts/ADD_SET";
-const ADD_ROUTINE = "workouts/ADD_ROUTINE"
 
-// let nextId = 1;
+//액션 생성함수 정의
+let nextId = 1;
 
 // const ID = Date.now().toString();
 const DATE = Date.now().toString();
-const ID = "id";
-export const addRoutine = id => ({
+// const ID = "id";
+export const addRoutine = ID => ({
   type: ADD_ROUTINE,
-  ID: {
+  [ID]: {
     id: ID,
     title: DATE,
     desc: "5x5",
     createdAt: DATE,
-    workoutItems: {
-    }
-  },
-})
-export const addWorkout = text => ({
+    workoutItems: {}
+  }
+});
+export const addWorkout = (ID, text) => ({
   type: ADD_WORKOUT,
-  [text]:{
-    1:{
-      reps:1,
-      weight:1
+  [ID]: {
+    workoutItems: {
+      [text]: {
+        1: {
+          reps: 0,
+          weight: 0
+        }
+      }
     }
   }
 });
@@ -45,24 +50,27 @@ export const addSet = name => ({
   name
 });
 
+// 액션 초기함수 정의
 const initialState = {};
 
+// 리듀서 작성
 export default function workouts(state = initialState, action) {
   switch (action.type) {
     case ADD_ROUTINE:
       console.log("ADD ROUTINE");
+      console.log("action", action);
       console.log("state", state);
-      return Object.assign(state,action);
+      return Object.assign({}, state, action);
 
     case ADD_WORKOUT:
       console.log("ADD_WORKOUT");
       console.log("action", action);
       console.log("state", state);
-      return Object.assign(state.ID.workoutItems,action)      
+      return Object.assign({}, state, action);
 
     case ADD_SET:
-      console.log("ADD_SETORKOUT");
-      return Object.assign(state.ID.workoutItems.workoutItemName,action)
+      console.log("ADD_SET");
+      return Object.assign({}, state.ID.workoutItems.workoutItemName, action);
 
     case REMOVE_WORKOUT:
       console.log("action", action);

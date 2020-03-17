@@ -1,28 +1,20 @@
 const ADD_SET = "sets/ADD_SET";
-const REMOVE_SET = "sets/REMOVE_WORKOUT";
 
-let nextId = 1;
-export const onAddSet = text => ({
+export const onAddSet = () => ({
   type: ADD_SET,
   set: {
-    id: nextId++,
-    reps: 0
+    reps: 0,
+    weight: 0
   }
-});
-
-export const onRemoveSet = id => ({
-  type: REMOVE_SET,
-  id
 });
 
 const initialState = [];
 
-export default function buttons(state = initialState, action) {
+export default function sets(state = initialState, action) {
   switch (action.type) {
     case ADD_SET:
+      console.log("ADD_SET");
       return state.concat(action.set);
-    case REMOVE_SET:
-      return state.filter(set => set.id !== action.id);
     default:
       return state;
   }
