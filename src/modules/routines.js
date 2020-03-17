@@ -1,15 +1,14 @@
 //액션 타입 정의
-const ADD_ROUTINE = "workouts/ADD_ROUTINE"; //루틴추가
-const ADD_WORKOUT = "workouts/ADD_WORKOUT"; //운동추가
-const ADD_SET = "workouts/ADD_SET"; //세트추가
-const REMOVE_WORKOUT = "workouts/REMOVE_WORKOUT"; //운동삭제
-const TOGGLE_WORKOUT = "workouts/TOGGLE_WORKOUT";
+const ADD_ROUTINE = "routines/ADD_ROUTINE"; //루틴추가
+const ADD_WORKOUT = "routines/ADD_WORKOUT"; //운동추가
+const ADD_SET = "routines/ADD_SET"; //세트추가
+const REMOVE_WORKOUT = "routines/REMOVE_WORKOUT"; //운동삭제
+const TOGGLE_WORKOUT = "routines/TOGGLE_WORKOUT";
 
 //액션 생성함수 정의
 let nextId = 1;
 
 // const ID = Date.now().toString();
-const DATE = Date.now().toString();
 // const ID = "id";
 export const addRoutine = ID => ({
   type: ADD_ROUTINE,
@@ -51,10 +50,31 @@ export const addSet = name => ({
 });
 
 // 액션 초기함수 정의
-const initialState = {};
-
+const DATE = Date.now().toString();
+const initialState = [
+  {
+    routine: {
+      id: DATE,
+      title: DATE,
+      createdAt: DATE,
+      desc: "Description",
+      workoutItems: [
+        {
+          workoutItemName: "workoutItemName",
+          sets: [
+            {
+              set: 1,
+              reps: 0,
+              weight: 0
+            }
+          ]
+        }
+      ]
+    }
+  }
+];
 // 리듀서 작성
-export default function workouts(state = initialState, action) {
+export default function routines(state = initialState, action) {
   switch (action.type) {
     case ADD_ROUTINE:
       console.log("ADD ROUTINE");

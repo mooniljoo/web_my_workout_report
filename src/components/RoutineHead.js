@@ -1,8 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
 import CreateWorkoutItem from "./CreateWorkoutItem";
-import { MdEdit } from "react-icons/md";
-//import { useRoutineState } from "../RoutineContext";
+//import { MdEdit } from "react-icons/md";
+
+function RoutineHead({ routine }) {
+  const today = new Date();
+  const dateString = today.toLocaleDateString("ko-KR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
+  const dayName = today.toLocaleDateString("ko-KR", { weekday: "long" });
+
+  return (
+    <RoutineHeadBlock>
+      <h2>{routine.title}</h2>
+      <h2>{routine.desc}</h2>
+      <h2>
+        {dateString}
+        <span className="day">{dayName}</span>
+      </h2>
+      <CreateWorkoutItem onCreate={routine} />
+    </RoutineHeadBlock>
+  );
+}
 
 const RoutineHeadBlock = styled.div`
   padding-top: 48px;
@@ -52,44 +73,5 @@ const Modify = styled.span`
       }
     `}
 `;
-
-function RoutineHead({ onCreate, workouts, id }) {
-  //const todos = useRoutineState();
-  //const undoneTasks = todos.filter(todo => !todo.done);
-  const today = new Date();
-  const dateString = today.toLocaleDateString("ko-KR", {
-    year: "numeric",
-    month: "long",
-    day: "numeric"
-  });
-  const dayName = today.toLocaleDateString("ko-KR", { weekday: "long" });
-
-  const [open, setOpen] = useState(false);
-  const onToggle = () => setOpen(!open);
-
-  return (
-    <RoutineHeadBlock>
-      <div>id{id}</div>
-      <h2>
-        <Modify onClick={onToggle} open={open}>
-          {/* {open ? 
-          {workouts.title}:<input type="text" placeholder="Input Your Title" value={workouts.title}/><MdEdit />} */}
-        </Modify>
-      </h2>
-      <h2>
-        {dateString}
-        <span className="day">{dayName}</span>
-      </h2>
-      <h2>
-        <Modify onClick={onToggle} open={open}>
-          {workouts.desc}
-          {open && <MdEdit />}
-        </Modify>
-      </h2>
-      {/* <div className="tasks-left">할 일 {undoneTasks.length}개 남음</div> */}
-      <CreateWorkoutItem id={id} onCreate={onCreate} />
-    </RoutineHeadBlock>
-  );
-}
 
 export default RoutineHead;

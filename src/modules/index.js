@@ -1,10 +1,11 @@
 import { combineReducers } from "redux";
 import counter from "./counter";
-import workouts from "./workouts";
+import routines from "./routines";
 
 const rootReducer = combineReducers({
+  //reucer 합치기
   counter,
-  workouts
+  routines
 });
 
 export default rootReducer;

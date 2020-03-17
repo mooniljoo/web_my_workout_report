@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MdAddBox } from "react-icons/md";
 import styled from "styled-components";
-import { addWorkout } from "../modules/workouts";
+import { addWorkout } from "../modules/routines";
 
 function CreateWorkoutItem({ id }) {
   const [text, setText] = useState("");

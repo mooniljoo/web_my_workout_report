@@ -1,59 +1,50 @@
 import React from "react";
 import "./WorkoutItem.scss";
 import { MdAdd, MdDelete } from "react-icons/md";
-import SetsContainer from "../containers/SetsContainer";
+import SetListContainer from "../containers/SetListContainer";
 import { onAddSet } from "../modules/sets";
 
-function CountDesc({ count }) {
+function SetDesc({ set }) {
   return (
     <span>
       <br />
-      <span>{count.set}</span>set
-      <span>{count.weight}</span>kg
-      <span>{count.reps}</span>reps
+      <span>{set.set}</span>set
+      <span>{set.weight}</span>kg
+      <span>{set.reps}</span>reps
     </span>
   );
 }
 
-function WorkoutItem({ workoutItem, onRemove }) {
-  //console.log(workoutItem);
-  const onClickRemove = () => {
-    onRemove(workoutItem.name);
-    console.log(`'${workoutItem.name}' has deleted.`);
-  };
-  const onClickAddSets = () => {
-    console.log("All right! One more Set!");
-  };
-
-  const counts = workoutItem.counts;
+function WorkoutItem({ workoutItem }) {
+  const workoutItemName = workoutItem.workoutItemName;
+  const sets = workoutItem.sets;
 
   return (
     <>
       <div className="WorkoutItem">
         <div className="WorkoutItemHead">
           <span className="name">
-            <b>{workoutItem.name}</b>
+            <b>{workoutItemName}</b>
           </span>
           <span>&nbsp;/&nbsp;</span>
-          <span className="counts">
-            {counts.map((count, index) => (
-              <CountDesc key={index} count={count} />
+          <span className="sets">
+            {sets.map((set, index) => (
+              <SetDesc key={index} set={set} />
             ))}
           </span>
           <span
             role="img"
             aria-label="Delete WorkoutItem"
             className="Button-del"
-            onClick={onClickRemove}
           >
             <MdDelete />
           </span>
         </div>
         <div className="WorkoutItemButtonsBlock">
           <div className="Buttons">
-            {/* <SetsContainer workoutItem={workoutItem} /> */}
+            <SetListContainer sets={sets} />
           </div>
-          <div className="addButton" onClick={onClickAddSets}>
+          <div className="addButton">
             <MdAdd />
           </div>
         </div>
