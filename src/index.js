@@ -7,8 +7,10 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "./modules";
 
-const store = createStore(rootReducer);
-//console.log(store.getState());
+const store = createStore(
+  rootReducer, /* preloadedState, */
+);
+console.log(store.getState());
 
 ReactDOM.render(
   <Provider store={store}>

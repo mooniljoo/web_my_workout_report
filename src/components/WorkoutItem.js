@@ -1,8 +1,9 @@
 import React from "react";
 import "./WorkoutItem.scss";
+import {useDispatch} from 'react-redux'
 import { MdAdd, MdDelete } from "react-icons/md";
 import SetListContainer from "../containers/SetListContainer";
-import { onAddSet } from "../modules/sets";
+import { removeWorkout } from "../modules/routines";
 
 function SetDesc({ set }) {
   return (
@@ -19,6 +20,15 @@ function WorkoutItem({ workoutItem }) {
   const workoutItemName = workoutItem.workoutItemName;
   const sets = workoutItem.sets;
 
+  //모듈로 액션 보내기
+  const dispatch = useDispatch();
+
+  const onRemoveWorkout = workoutItemNameText => dispatch(removeWorkout(workoutItemNameText));
+  const clickRemoveWorkout = ()=> {
+    console.log(workoutItemName)
+    onRemoveWorkout(workoutItemName)
+  }
+
   return (
     <>
       <div className="WorkoutItem">
@@ -26,18 +36,18 @@ function WorkoutItem({ workoutItem }) {
           <span className="name">
             <b>{workoutItemName}</b>
           </span>
-          <span>&nbsp;/&nbsp;</span>
-          <span className="sets">
-            {sets.map((set, index) => (
-              <SetDesc key={index} set={set} />
-            ))}
-          </span>
           <span
             role="img"
             aria-label="Delete WorkoutItem"
             className="Button-del"
+            onClick={clickRemoveWorkout}
           >
             <MdDelete />
+          </span>
+          <span className="sets">
+            {sets.map((set, index) => (
+              <SetDesc key={index} set={set} />
+            ))}
           </span>
         </div>
         <div className="WorkoutItemButtonsBlock">

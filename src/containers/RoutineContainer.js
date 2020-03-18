@@ -9,7 +9,7 @@ function RoutineContainer() {
   // const state = useSelector(state => state);
 
   // console.log(state);
-  console.log(routine);
+  // console.log(routine);
   return (
     <div>
       <RoutineHead routine={routine} />

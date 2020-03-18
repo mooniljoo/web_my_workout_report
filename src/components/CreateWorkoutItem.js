@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { MdAddBox } from "react-icons/md";
 import styled from "styled-components";
 import { addWorkout } from "../modules/routines";
@@ -7,11 +7,12 @@ import { addWorkout } from "../modules/routines";
 function CreateWorkoutItem({ id }) {
   const [text, setText] = useState("");
 
-  //디스패치
+  //모듈로 액션 보내기
   const dispatch = useDispatch();
 
   const onAddWorkout = text => dispatch(addWorkout(text));
 
+  //로컬 함수
   const onChange = e => setText(e.target.value);
   const onSubmit = e => {
     e.preventDefault(); // Submit 이벤트 발생했을 때 새로고침 방지
