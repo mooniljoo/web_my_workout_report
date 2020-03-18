@@ -3,7 +3,7 @@ import "./WorkoutItem.scss";
 import {useDispatch} from 'react-redux'
 import { MdAdd, MdDelete } from "react-icons/md";
 import SetListContainer from "../containers/SetListContainer";
-import { removeWorkout } from "../modules/routines";
+import { removeWorkout,addSet } from "../modules/routines";
 
 function SetDesc({ set }) {
   return (
@@ -24,9 +24,15 @@ function WorkoutItem({ workoutItem }) {
   const dispatch = useDispatch();
 
   const onRemoveWorkout = workoutItemNameText => dispatch(removeWorkout(workoutItemNameText));
+  const onAddSet = workoutItemNameText => dispatch(addSet(workoutItemNameText));
+  
   const clickRemoveWorkout = ()=> {
     console.log(workoutItemName)
     onRemoveWorkout(workoutItemName)
+  }
+  const clickAddSet = () =>{
+    console.log(workoutItemName)
+    onAddSet(workoutItemName)
   }
 
   return (
@@ -54,7 +60,7 @@ function WorkoutItem({ workoutItem }) {
           <div className="Buttons">
             <SetListContainer sets={sets} />
           </div>
-          <div className="addButton">
+          <div className="addButton" onClick={clickAddSet}>
             <MdAdd />
           </div>
         </div>
