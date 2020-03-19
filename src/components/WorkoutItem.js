@@ -7,12 +7,11 @@ import { removeWorkout, addSet } from "../modules/routines";
 
 function SetDesc({ set }) {
   return (
-    <span>
-      <br />
+    <li>
       <span>{set.set}</span>set
       <span>{set.weight}</span>kg
       <span>{set.reps}</span>reps
-    </span>
+    </li>
   );
 }
 
@@ -30,22 +29,23 @@ function WorkoutItem({ workoutItem }) {
     dispatch(addSet(workoutItemNameText, nextSet));
 
   const clickRemoveWorkout = () => {
-    console.log(workoutItemName.toString());
+    // console.log(workoutItemName.toString());
     //workoutItems의 운동항목 동적으로 바꿀 것
     onRemoveWorkout(workoutItemName.toString().replace(/(\s*)/g, ""));
   };
   const clickAddSet = () => {
-    console.log(workoutItemName.toString());
+    // console.log(workoutItemName.toString());
     //workoutItems의 운동항목 동적으로 바꿀 것
     setNextSet(nextSet + 1);
+    // console.log(workoutItem);
     onAddSet(workoutItemName.toString().replace(/(\s*)/g, ""), nextSet);
-    console.log(workoutItemName.toString());
-    console.log(nextSet);
+    // console.log(workoutItemName.toString());
+    // console.log(nextSet);
   };
 
   return (
     <>
-      <div className="WorkoutItem">
+      <li className="WorkoutItem">
         <div className="WorkoutItemHead">
           <span className="name">
             <b>{workoutItemName}</b>
@@ -58,11 +58,11 @@ function WorkoutItem({ workoutItem }) {
           >
             <MdDelete />
           </span>
-          <span className="sets">
+          <ul className="sets">
             {Object.values(sets).map((set, index) => (
               <SetDesc key={index} set={set} />
             ))}
-          </span>
+          </ul>
         </div>
         <div className="WorkoutItemButtonsBlock">
           <div className="Buttons">
@@ -72,7 +72,7 @@ function WorkoutItem({ workoutItem }) {
             <MdAdd />
           </div>
         </div>
-      </div>
+      </li>
     </>
   );
 }

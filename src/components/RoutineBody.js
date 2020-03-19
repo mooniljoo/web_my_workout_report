@@ -16,5 +16,7 @@ const WorkoutListBlock = styled.div`
   flex: 1;
   padding-bottom: 48px;
   overflow-y: auto;
+  padding-left: 32px;
+  padding-right: 32px;
 `;
 export default RoutineBody;

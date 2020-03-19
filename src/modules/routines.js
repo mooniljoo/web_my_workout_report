@@ -3,6 +3,7 @@
 const ADD_WORKOUT = "routines/ADD_WORKOUT"; //운동추가
 const ADD_SET = "routines/ADD_SET"; //세트추가
 const REMOVE_WORKOUT = "routines/REMOVE_WORKOUT"; //운동삭제
+const ADD_REPS = "routines/ADD_REPS"; //운동삭제
 
 //액션 정의
 export const addWorkout = text => ({
@@ -22,6 +23,14 @@ export const addSet = (text, nextSet) => ({
   text,
   nextSet
   // newSet: { [++nextSet]: { set: nextSet, reps: 0, weight: 0 } }
+});
+
+export const addReps = (text, setIndex, reps, weight) => ({
+  type: ADD_REPS,
+  text,
+  setIndex,
+  reps,
+  weight
 });
 
 // 액션 초기함수 정의
@@ -49,7 +58,7 @@ const initialState = {
         }
       },
       benchpress: {
-        name: "bench press",
+        name: "benchpress",
         sets: {
           1: {
             set: 1,
@@ -123,6 +132,35 @@ export default function routines(state = initialState, action) {
                   set: action.nextSet,
                   reps: 0,
                   weight: 0
+                }
+                // ...action.newSet
+              }
+            }
+          }
+        }
+      };
+
+    case ADD_REPS:
+      console.log(
+        "ADD_REPS",
+        action.text,
+        action.setIndex,
+        action.reps,
+        action.weight
+      );
+      return {
+        routine: {
+          ...state.routine,
+          workoutItems: {
+            ...state.routine.workoutItems,
+            [action.text]: {
+              ...state.routine.workoutItems[action.text],
+              sets: {
+                ...state.routine.workoutItems[action.text].sets,
+                [action.setIndex]: {
+                  set: action.setIndex,
+                  reps: action.reps,
+                  weight: action.weight
                 }
                 // ...action.newSet
               }

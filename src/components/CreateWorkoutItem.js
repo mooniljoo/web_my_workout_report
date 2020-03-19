@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { MdAddBox } from "react-icons/md";
 import styled from "styled-components";
 import { addWorkout } from "../modules/routines";
@@ -20,7 +20,7 @@ function CreateWorkoutItem({ id }) {
     setText(""); // 인풋 초기화
   };
   return (
-    <form onSubmit={onSubmit}>
+    <Form onSubmit={onSubmit}>
       <Input
         id={id}
         value={text}
@@ -28,21 +28,39 @@ function CreateWorkoutItem({ id }) {
         onChange={onChange}
         required
       />
-      <button type="submit">
-        <MdAddBox />
-      </button>
-    </form>
+      <Button type="submit">
+        <MdAddBox color="#4dabf7" size="100%" />
+      </Button>
+    </Form>
   );
 }
 
-const Input = styled.input`
-  padding: 12px;
+const Form = styled.form`
+  display: flex;
+  padding: 5px 12px;
   border-radius: 4px;
   border: 1px solid #dee2e6;
   width: 100%;
-  outline: none;
-  font-size: 18px;
   box-sizing: border-box;
+`;
+
+const Input = styled.input`
+  width: 90%;
+  height: 35px;
+  font-size: 28px;
+  color: #343a40;
+  font-weight: bold;
+  border: none;
+  box-sizing: border-box;
+`;
+
+const Button = styled.button`
+  width: 10%;
+  padding: 0;
+  display: flex;
+  border: none;
+  box-sizing: border-box;
+  cursor: pointer;
 `;
 
 export default CreateWorkoutItem;

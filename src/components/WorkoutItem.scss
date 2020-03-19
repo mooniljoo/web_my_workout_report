@@ -1,6 +1,10 @@
 $black: #333;
 $blue: #1c7ed6;
 
+li {
+  list-style: none;
+  list-style-position: inside;
+}
 .WorkoutItem {
   margin: 0;
   color: #343a40;
@@ -9,6 +13,7 @@ $blue: #1c7ed6;
   }
   .sets {
     font-size: 20px;
+    padding: 0;
   }
   .addButton {
     display: flex;
@@ -51,7 +56,7 @@ $blue: #1c7ed6;
     cursor: pointer;
   }
 
-  .WorkoutItemButtonsBlock{
+  .WorkoutItemButtonsBlock {
     display: flex;
   }
 }
