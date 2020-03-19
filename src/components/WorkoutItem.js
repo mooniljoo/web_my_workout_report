@@ -17,7 +17,7 @@ function SetDesc({ set }) {
 }
 
 function WorkoutItem({ workoutItem }) {
-  const [nextSet, setNextSet] = useState(1);
+  const [nextSet, setNextSet] = useState(2);
   const workoutItemName = workoutItem.name;
   const sets = workoutItem.sets;
 
@@ -32,13 +32,13 @@ function WorkoutItem({ workoutItem }) {
   const clickRemoveWorkout = () => {
     console.log(workoutItemName.toString());
     //workoutItems의 운동항목 동적으로 바꿀 것
-    onRemoveWorkout(workoutItemName.toString());
+    onRemoveWorkout(workoutItemName.toString().replace(/(\s*)/g, ""));
   };
   const clickAddSet = () => {
     console.log(workoutItemName.toString());
     //workoutItems의 운동항목 동적으로 바꿀 것
     setNextSet(nextSet + 1);
-    onAddSet(workoutItemName.toString(), nextSet);
+    onAddSet(workoutItemName.toString().replace(/(\s*)/g, ""), nextSet);
     console.log(workoutItemName.toString());
     console.log(nextSet);
   };

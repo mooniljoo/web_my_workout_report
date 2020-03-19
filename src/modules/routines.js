@@ -48,7 +48,7 @@ const initialState = {
           // }
         }
       },
-      deadlift: {
+      benchpress: {
         name: "bench press",
         sets: {
           1: {
