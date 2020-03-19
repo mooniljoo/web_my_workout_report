@@ -6,12 +6,11 @@ This project was made with [Create React App](https://github.com/facebook/create
 
 #### Now In Progress
 
-1. Addset해결
-2. reps 스토어 연동
-3. set 삭제 버튼 및 기능
-4. 무게 연동
-5. 제목 수정기능
-6. styling
+1. reps 해결
+2. set 삭제 버튼 및 기능
+3. 제목 수정기능
+4. styling
+5. 같은 세트에서 무게가 다를 때 처리
 
 #### Step 1 - Fousing on Writing
 
@@ -27,7 +26,8 @@ This project was made with [Create React App](https://github.com/facebook/create
 
 #### Step 3
 
-1. 이전의 본인기록과 현재기록 비교 기능 (차트)
+1. lbs 추가
+2. 이전의 본인기록과 현재기록 비교 기능 (차트)
 
 #### Step 4
 
