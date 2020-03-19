@@ -1,10 +1,10 @@
-# my_workout_report <진행중>
+# <진행중> my_workout_report
 
 This project was made with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Goal
 
-# Now In Progress
+#### Now In Progress
 
 1. Addset해결
 2. reps 스토어 연동
@@ -13,23 +13,23 @@ This project was made with [Create React App](https://github.com/facebook/create
 5. 제목 수정기능
 6. styling
 
-# Step 1 - Fousing on Writing
+#### Step 1 - Fousing on Writing
 
 1. 수기기록보다 빠른 UX 환경 조성
 2. 카카오톡 메시지 및 쉬운 공유
 3. 자동완성 검색 기능 (Object로 직접 세팅)
 
-# Step 2 - Focusing on Database
+#### Step 2 - Focusing on Database
 
 1. DB화
 2. 본인 기록 조회 (테이블)
 3. 자동완성 검색 기능 (유저 검색히스토리 자동완성)
 
-# Step 3
+#### Step 3
 
 1. 이전의 본인기록과 현재기록 비교 기능 (차트)
 
-# Step 4
+#### Step 4
 
 1. 인바디 API 연동
 2. 신체, 체형에 맞는 운동루틴 추천 기능
