@@ -19,6 +19,7 @@ function SetDesc({ set }) {
 function WorkoutItem({ workoutItem }) {
   const workoutItemName = workoutItem.name;
   const sets = workoutItem.sets;
+  console.log(Object.values(workoutItem.sets));
 
   //모듈로 액션 보내기
   const dispatch = useDispatch();

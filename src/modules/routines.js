@@ -41,6 +41,11 @@ const initialState = {
             set: 1,
             reps: 0,
             weight: 0
+          },
+          2: {
+            set: 2,
+            reps: 0,
+            weight: 0
           }
         }
       },
@@ -67,9 +72,13 @@ export default function routines(state = initialState, action) {
           workoutItems: {
             ...state.routine.workoutItems,
             [action.text]: {
-              1: {
-                reps: 0,
-                weight: 0
+              name: [action.text],
+              sets: {
+                1: {
+                  set: 1,
+                  reps: 0,
+                  weight: 0
+                }
               }
             }
           }
