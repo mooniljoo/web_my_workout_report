@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./WorkoutItem.scss";
 import { useDispatch } from "react-redux";
 import { MdAdd, MdDelete } from "react-icons/md";
@@ -17,24 +17,30 @@ function SetDesc({ set }) {
 }
 
 function WorkoutItem({ workoutItem }) {
+  const [nextSet, setNextSet] = useState(1);
   const workoutItemName = workoutItem.name;
   const sets = workoutItem.sets;
-  console.log(Object.values(workoutItem.sets));
 
   //모듈로 액션 보내기
   const dispatch = useDispatch();
 
   const onRemoveWorkout = workoutItemNameText =>
     dispatch(removeWorkout(workoutItemNameText));
-  const onAddSet = workoutItemNameText => dispatch(addSet(workoutItemNameText));
+  const onAddSet = (workoutItemNameText, nextSet) =>
+    dispatch(addSet(workoutItemNameText, nextSet));
 
   const clickRemoveWorkout = () => {
-    console.log(workoutItemName);
-    onRemoveWorkout(workoutItemName);
+    console.log(workoutItemName.toString());
+    //workoutItems의 운동항목 동적으로 바꿀 것
+    onRemoveWorkout(workoutItemName.toString());
   };
   const clickAddSet = () => {
-    console.log(workoutItemName);
-    onAddSet(workoutItemName);
+    console.log(workoutItemName.toString());
+    //workoutItems의 운동항목 동적으로 바꿀 것
+    setNextSet(nextSet + 1);
+    onAddSet(workoutItemName.toString(), nextSet);
+    console.log(workoutItemName.toString());
+    console.log(nextSet);
   };
 
   return (
@@ -60,7 +66,7 @@ function WorkoutItem({ workoutItem }) {
         </div>
         <div className="WorkoutItemButtonsBlock">
           <div className="Buttons">
-            <SetListContainer sets={sets} />
+            <SetListContainer sets={sets} workoutItem={workoutItem} />
           </div>
           <div className="addButton" onClick={clickAddSet}>
             <MdAdd />

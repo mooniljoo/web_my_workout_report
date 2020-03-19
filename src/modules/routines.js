@@ -10,19 +10,18 @@ export const addWorkout = text => ({
   text
 });
 
-export const removeWorkout = workoutItemNameText => ({
+export const removeWorkout = text => ({
   type: REMOVE_WORKOUT,
-  workoutItemNameText
+  text
 });
 
-export const addSet = workoutItemNameText => ({
+//각 운동마다 추가되지 않고 전체에서 추가 됨
+//let nextSet = 1;
+export const addSet = (text, nextSet) => ({
   type: ADD_SET,
-  workoutItemNameText,
-  set: {
-    set: 2,
-    reps: 0,
-    weight: 0
-  }
+  text,
+  nextSet
+  // newSet: { [++nextSet]: { set: nextSet, reps: 0, weight: 0 } }
 });
 
 // 액션 초기함수 정의
@@ -41,22 +40,27 @@ const initialState = {
             set: 1,
             reps: 0,
             weight: 0
-          },
-          2: {
-            set: 2,
-            reps: 0,
-            weight: 0
           }
+          // 2: {
+          //   set: 2,
+          //   reps: 0,
+          //   weight: 0
+          // }
         }
       },
       deadlift: {
-        name: "deadlift",
+        name: "bench press",
         sets: {
           1: {
             set: 1,
             reps: 0,
             weight: 0
           }
+          // 2: {
+          //   set: 2,
+          //   reps: 0,
+          //   weight: 0
+          // }
         }
       }
     }
@@ -86,31 +90,46 @@ export default function routines(state = initialState, action) {
       };
 
     case REMOVE_WORKOUT:
+      const matchedWorkoutItems = Object.keys(state.routine.workoutItems)
+        .filter(key => key !== action.text)
+        .reduce((obj, key) => {
+          obj[key] = state.routine.workoutItems[key];
+          return obj;
+        }, {});
       console.log("REMOVE_WORKOUT");
-      console.log("\taction", action.workoutItemNameText);
-      console.log("\tstate", state);
-      //복사해서 나와야 됨 변형시키면 안됨
-      const new_state_remove = state[0].routine.workoutItems.filter(
-        workoutItem =>
-          workoutItem.workoutItemName !== action.workoutItemNameText
-      );
-      const res_remove = new_state_remove;
-      console.log("\tnew_state", res_remove);
-      return res_remove;
+      console.log("\trest items:", matchedWorkoutItems);
+
+      return {
+        routine: {
+          ...state.routine,
+          workoutItems: {
+            ...matchedWorkoutItems
+          }
+        }
+      };
 
     case ADD_SET:
-      console.log("ADD_SET");
-      console.log("\taction", action.workoutItemNameText);
-      console.log("\tstate", state);
-      //복사해서 나와야 됨 변형시키면 안됨
-      const new_state_addSet = state.concat();
-      const matchedWorkoutItems = state[0].routine.workoutItems.filter(
-        workoutItem =>
-          workoutItem.workoutItemName === action.workoutItemNameText
-      );
-      const res_addSet = matchedWorkoutItems[0].sets.concat(action.set);
-      console.log("\tnew_state", res_addSet);
-      return res_addSet;
+      console.log("ADD_SET", action.text, action.nextSet);
+      return {
+        routine: {
+          ...state.routine,
+          workoutItems: {
+            ...state.routine.workoutItems,
+            [action.text]: {
+              ...state.routine.workoutItems[action.text],
+              sets: {
+                ...state.routine.workoutItems[action.text].sets,
+                [action.nextSet]: {
+                  set: action.nextSet,
+                  reps: 0,
+                  weight: 0
+                }
+                // ...action.newSet
+              }
+            }
+          }
+        }
+      };
 
     default:
       return state;
