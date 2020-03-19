@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import "./Set.scss";
 
-function Set() {
+function Set(set) {
+  //전역
+  const reps = set.reps;
+
+  //로컬
   const [repsCount, setRepsCount] = useState(0);
 
   const onincreaseReps = () => {
