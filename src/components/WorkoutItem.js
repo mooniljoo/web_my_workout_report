@@ -1,9 +1,9 @@
 import React from "react";
 import "./WorkoutItem.scss";
-import {useDispatch} from 'react-redux'
+import { useDispatch } from "react-redux";
 import { MdAdd, MdDelete } from "react-icons/md";
 import SetListContainer from "../containers/SetListContainer";
-import { removeWorkout,addSet } from "../modules/routines";
+import { removeWorkout, addSet } from "../modules/routines";
 
 function SetDesc({ set }) {
   return (
@@ -17,23 +17,24 @@ function SetDesc({ set }) {
 }
 
 function WorkoutItem({ workoutItem }) {
-  const workoutItemName = workoutItem.workoutItemName;
+  const workoutItemName = workoutItem.name;
   const sets = workoutItem.sets;
 
   //모듈로 액션 보내기
   const dispatch = useDispatch();
 
-  const onRemoveWorkout = workoutItemNameText => dispatch(removeWorkout(workoutItemNameText));
+  const onRemoveWorkout = workoutItemNameText =>
+    dispatch(removeWorkout(workoutItemNameText));
   const onAddSet = workoutItemNameText => dispatch(addSet(workoutItemNameText));
-  
-  const clickRemoveWorkout = ()=> {
-    console.log(workoutItemName)
-    onRemoveWorkout(workoutItemName)
-  }
-  const clickAddSet = () =>{
-    console.log(workoutItemName)
-    onAddSet(workoutItemName)
-  }
+
+  const clickRemoveWorkout = () => {
+    console.log(workoutItemName);
+    onRemoveWorkout(workoutItemName);
+  };
+  const clickAddSet = () => {
+    console.log(workoutItemName);
+    onAddSet(workoutItemName);
+  };
 
   return (
     <>
@@ -51,7 +52,7 @@ function WorkoutItem({ workoutItem }) {
             <MdDelete />
           </span>
           <span className="sets">
-            {sets.map((set, index) => (
+            {Object.values(sets).map((set, index) => (
               <SetDesc key={index} set={set} />
             ))}
           </span>

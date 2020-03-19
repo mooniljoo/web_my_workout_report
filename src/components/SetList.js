@@ -4,7 +4,7 @@ import Set from "./Set";
 function SetList({ sets }) {
   return (
     <>
-      {sets.map((set, index) => (
+      {Object.values(sets).map((set, index) => (
         <Set key={index} set={set} />
       ))}
     </>
