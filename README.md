@@ -1,26 +1,53 @@
-# my_workout_report
-
-## Goals
-
-1. 메모장보다 빠른 기록
-2. DB화
-3. 이전의 본인기록과 현재기록 비교 기능
+# my_workout_report <진행중>
 
 This project was made with [Create React App](https://github.com/facebook/create-react-app).
 
-## 실행
+## Goal
 
-이 디렉토리에서 아래 명령어를 입력한다.
+# Now In Progress
+
+1. reps 스토어 연동
+2. set 삭제 버튼 및 기능
+3. 무게 연동
+4. 제목 수정기능
+5. styling
+
+# Step 1 - Fousing on Writing
+
+1. 수기기록보다 빠른 UX 환경 조성
+2. 카카오톡 메시지 및 쉬운 공유
+3. 자동완성 검색 기능 (Object로 직접 세팅)
+
+# Step 2 - Focusing on Database
+
+1. DB화
+2. 본인 기록 조회 (테이블)
+3. 자동완성 검색 기능 (유저 검색히스토리 자동완성)
+
+# Step 3
+
+1. 이전의 본인기록과 현재기록 비교 기능 (차트)
+
+# Step 4
+
+1. 인바디 API 연동
+2. 신체, 체형에 맞는 운동루틴 추천 기능
+
+## Execute
+
+'Node.js' required.
+
+현재 디렉토리에서 아래 명령어를 입력한다.
 
 ```bash
+yarn install
 yarn start
 ```
 
 개발모드로 웹앱이 실행되며<br />
 [http://localhost:3000](http://localhost:3000)를 통해 웹앱을 볼 수 있다.
 
-수정사항이 있으면 웹페이지는 새로고침된다.<br />
-lint 에러는 console창을 통해 확인할수 있다.
+수정사항이 발생시 웹페이지는 자동새로고침된다.<br />
 
 ## Learn More
 
