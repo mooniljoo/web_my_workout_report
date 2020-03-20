@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import CounterContainer from "../containers/CounterContainer";
 import WorkoutListContainer from "../containers/WorkoutListContainer";
 import styled, { css } from "styled-components";
-import { MdArrowBack, MdCheck } from "react-icons/md";
+import { MdArrowBack, MdCheck, MdContentCopy } from "react-icons/md";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 function TextWorkoutListBlock({ workoutItem }) {
   return (
@@ -23,11 +24,21 @@ function TextWorkoutListBlock({ workoutItem }) {
 
 function RoutineBody({ routine }) {
   const [open, setOpen] = useState(false);
+  const [copyState, setCopyState] = useState({
+    value: "Sorry, This is under test.",
+    copied: false
+  });
   const onToggle = () => {
     setOpen(!open);
   };
   const closePop = () => {
     setOpen(false);
+  };
+  const onClick = ({ target: { innerHTML } }) => {
+    console.log(`Clicked on "${innerHTML}"!`); // eslint-disable-line
+  };
+  const onCopy = () => {
+    setCopyState({ copied: true });
   };
   return (
     <>
@@ -40,7 +51,16 @@ function RoutineBody({ routine }) {
           <Pop>
             <Button onClick={closePop}>X</Button>
             <Head>
-              <div>Today's Routine</div>
+              Today's Routine
+              <CopyToClipboard
+                onCopy={onCopy}
+                // options={{ message: "Whoa!" }}
+                text={copyState.value}
+              >
+                <CopyButton onClick={onClick}>
+                  <MdContentCopy />
+                </CopyButton>
+              </CopyToClipboard>
             </Head>
             <Body>
               <div>{routine.title}</div>
@@ -50,6 +70,8 @@ function RoutineBody({ routine }) {
               ))}
             </Body>
           </Pop>
+
+          {copyState.copied && <MessageBottom>Copied.</MessageBottom>}
         </DarkBackground>
       )}
       <CircleButton onClick={onToggle}>
@@ -58,6 +80,42 @@ function RoutineBody({ routine }) {
     </>
   );
 }
+const MessageBottom = styled.div`
+  display: flex;
+  align-items: center;
+
+  width: 90%;
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100px;
+  border-radius: 10px;
+  color: #fff;
+  background: rgba(51, 51, 51, 0.7);
+  transition: 0.125s all ease-in;
+  animation-duration: 1s;
+  animation-name: slideUp;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  @keyframes slideUp {
+    from {
+      opacity: 0.7;
+      transform: translate(0, 100px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+`;
+const CopyButton = styled.i`
+  display: inline-block;
+  cursor: pointer;
+`;
 const Button = styled.div`
   display: flex;
   justify-content: center;
