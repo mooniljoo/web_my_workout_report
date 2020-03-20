@@ -33,7 +33,7 @@ const RoutineHeadBlock = styled.div`
   border-bottom: 1px solid #e9ecef;
   h2 {
     margin: 0;
-    font-size: 36px;
+    font-size: 2rem;
     color: #343a40;
   }
   .day {

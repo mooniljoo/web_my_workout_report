@@ -47,3 +47,14 @@ $gray: #ccc;
     }
   }
 }
+
+@media (max-width: 720px) {
+  .SetterNav {
+  }
+  .SetterNav {
+    input {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+}

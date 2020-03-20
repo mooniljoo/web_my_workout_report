@@ -37,7 +37,13 @@ function CreateWorkoutItem({ id }) {
 
 const Form = styled.form`
   display: flex;
-  padding: 5px 12px;
+  justify-content: center;
+  align-items: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 2px;
+  padding-top: 2px;
+
   border-radius: 4px;
   border: 1px solid #dee2e6;
   width: 100%;
@@ -47,15 +53,19 @@ const Form = styled.form`
 const Input = styled.input`
   width: 90%;
   height: 35px;
-  font-size: 28px;
+  font-size: 1.3rem;
   color: #343a40;
   font-weight: bold;
   border: none;
   box-sizing: border-box;
+  ::placeholder {
+    font-size: 1.3rem;
+  }
 `;
 
 const Button = styled.button`
   width: 10%;
+  height: 100%;
   padding: 0;
   display: flex;
   border: none;
