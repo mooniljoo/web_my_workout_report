@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.scss";
+import "./initialize.scss";
 import RoutineContainer from "./containers/RoutineContainer";
 
 function App() {

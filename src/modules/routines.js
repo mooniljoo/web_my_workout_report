@@ -49,12 +49,12 @@ const initialState = {
             set: 1,
             reps: 0,
             weight: 0
+          },
+          2: {
+            set: 2,
+            reps: 0,
+            weight: 0
           }
-          // 2: {
-          //   set: 2,
-          //   reps: 0,
-          //   weight: 0
-          // }
         }
       },
       benchpress: {
