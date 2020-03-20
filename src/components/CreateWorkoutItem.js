@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { MdAddBox } from "react-icons/md";
-import styled from "styled-components";
+import { MdAdd } from "react-icons/md";
+import styled, { css } from "styled-components";
 import { addWorkout } from "../modules/routines";
 
 function CreateWorkoutItem({ id }) {
@@ -29,7 +29,7 @@ function CreateWorkoutItem({ id }) {
         required
       />
       <Button type="submit">
-        <MdAddBox color="#4dabf7" size="100%" />
+        <MdAdd size="100%" />
       </Button>
     </Form>
   );
@@ -60,7 +60,19 @@ const Button = styled.button`
   display: flex;
   border: none;
   box-sizing: border-box;
+  border-radius: 50%;
   cursor: pointer;
+  color: white;
+
+  transition: 0.125s all ease-in;
+  background: #38d9a9;
+  &:hover {
+    transform: scale(1.1);
+    background: #63e6be;
+  }
+  &:active {
+    background: #20c997;
+  }
 `;
 
 export default CreateWorkoutItem;

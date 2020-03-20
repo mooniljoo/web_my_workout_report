@@ -26,6 +26,9 @@ function RoutineBody({ routine }) {
   const onToggle = () => {
     setOpen(!open);
   };
+  const closePop = () => {
+    setOpen(false);
+  };
   return (
     <>
       <WorkoutListBlock>
@@ -35,6 +38,7 @@ function RoutineBody({ routine }) {
       {open && (
         <DarkBackground>
           <Pop>
+            <Button onClick={closePop}>X</Button>
             <Head>
               <div>Today's Routine</div>
             </Head>
@@ -54,6 +58,25 @@ function RoutineBody({ routine }) {
     </>
   );
 }
+const Button = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  width: 50px;
+  height: 50px;
+  transform: translate(25px, -25px);
+  border-radius: 50%;
+
+  background-color: #fa5252;
+  color: #fff;
+
+  cursor: pointer;
+`;
 
 const DarkBackground = styled.div`
   position: fixed;
@@ -106,10 +129,18 @@ const Pop = styled.div`
   font-size: 24px;
   color: #343a40;
 `;
-const Head = styled.div``;
+const Head = styled.div`
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+`;
 const Body = styled.div`
   height: 100%;
   overflow-y: auto;
+  /* ●●●●●●●스크롤바 숨기기 */
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 const WorkoutListBlock = styled.div`
   flex: 1;

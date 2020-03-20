@@ -35,11 +35,18 @@ export const addReps = (text, setIndex, reps, weight) => ({
 
 // 액션 초기함수 정의
 const DATE = Date.now().toString();
+const today = new Date();
+const dateString = today.toLocaleDateString("ko-KR", {
+  year: "numeric",
+  month: "long",
+  day: "numeric"
+});
+const dayName = today.toLocaleDateString("ko-KR", { weekday: "long" });
 const initialState = {
   routine: {
     id: DATE,
-    title: DATE,
-    createdAt: DATE,
+    title: "title",
+    createdAt: dateString,
     desc: "Description",
     workoutItems: {
       squat: {
