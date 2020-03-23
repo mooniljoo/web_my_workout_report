@@ -1,40 +1,114 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import CreateWorkoutItem from "./CreateWorkoutItem";
-//import { MdEdit } from "react-icons/md";
+import { MdEdit, MdDone } from "react-icons/md";
+
+const useScroll = () => {
+  const [state, setState] = useState({
+    x: 0,
+    y: 0
+  });
+
+  const onScroll = () => {
+    setState({ y: window.scrollY, x: window.scrollX });
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onscroll);
+  }, []);
+  return state;
+};
 
 function RoutineHead({ routine }) {
-  const today = new Date();
-  const dateString = today.toLocaleDateString("ko-KR", {
-    year: "numeric",
-    month: "long",
-    day: "numeric"
+  const [inputs, setInputs] = useState({
+    title: routine.title,
+    desc: routine.desc
   });
-  const dayName = today.toLocaleDateString("ko-KR", { weekday: "long" });
+  const { title, desc } = inputs;
+  const [readonly, setReadOnly] = useState(true);
+  const [toggle, setToggle] = useState(false);
+  const { y } = useScroll();
 
+  const onChange = e => {
+    const { title, desc } = e.target;
+    console.log(e.target);
+    setInputs({ ...inputs, [title]: title, [desc]: desc });
+  };
+  const EditTitle = () => {
+    setReadOnly(!readonly);
+  };
+  const test = e => {
+    console.log(e.target);
+  };
   return (
     <RoutineHeadBlock>
-      <h2>{routine.title}</h2>
-      <h2>{routine.desc}</h2>
+      <RoutineHeadLine>
+        <Input
+          type="text"
+          value={title}
+          onChange={onChange}
+          onMouseOver={test}
+          readOnly={readonly}
+        />
+        {/* {readonly ? (
+          <MdEdit onClick={EditTitle} />
+        ) : (
+          <MdDone onClick={setReadOnly} />
+        )} */}
+      </RoutineHeadLine>
+      <RoutineHeadLine>
+        <Input
+          type="text"
+          value={desc}
+          onChange={onChange}
+          readOnly={readonly}
+        />
+        {/* {readonly ? (
+          <MdEdit onClick={EditTitle} />
+        ) : (
+          <MdDone onClick={setReadOnly} />
+        )} */}
+      </RoutineHeadLine>
       <h2>
-        {dateString}
-        <span className="day">{dayName}</span>
+        {routine.createdAt}
+        <span className="day">{routine.dayName}</span>
       </h2>
-      <CreateWorkoutItem onCreate={routine} />
+      <CreateWorkoutItemBlock
+        style={{ position: y > 224 ? "fixed" : "static" }}
+      >
+        <CreateWorkoutItem onCreate={routine} />
+      </CreateWorkoutItemBlock>
     </RoutineHeadBlock>
   );
 }
-
-const RoutineHeadBlock = styled.div`
-  padding-top: 48px;
+const RoutineHeadLine = styled.h2`
+  display: flex;
+  align-items: center;
+`;
+const CreateWorkoutItemBlock = styled.div`
   padding-left: 32px;
   padding-right: 32px;
-  padding-bottom: 24px;
+  top: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-bottom: 1px solid #e9ecef;
+  background: #fff;
+`;
+const Input = styled.input`
+  width: 100%;
+  height: 100%;
+  border: none;
+  color: #343a40;
+  font-weight: bold;
+`;
+const RoutineHeadBlock = styled.div`
+  padding-top: 48px;
   h2 {
     margin: 0;
     font-size: 2rem;
     color: #343a40;
+    padding-left: 32px;
+    padding-right: 32px;
   }
   .day {
     margin-top: 4px;

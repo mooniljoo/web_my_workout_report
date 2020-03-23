@@ -47,6 +47,7 @@ const initialState = {
     id: DATE,
     title: "title",
     createdAt: dateString,
+    dayName: dayName,
     desc: "Description",
     workoutItems: {
       // squat: {

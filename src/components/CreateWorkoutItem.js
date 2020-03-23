@@ -27,6 +27,7 @@ function CreateWorkoutItem({ id }) {
         placeholder="Input your Item"
         onChange={onChange}
         required
+        autoFocus
       />
       <Button type="submit">
         <MdAdd size="100%" />
@@ -34,7 +35,6 @@ function CreateWorkoutItem({ id }) {
     </Form>
   );
 }
-
 const Form = styled.form`
   display: flex;
   justify-content: center;
