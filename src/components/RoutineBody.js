@@ -10,8 +10,8 @@ function TextWorkoutListBlock({ workoutItem }) {
     <ul>
       <TextWorkoutList>
         <div className="name">{workoutItem.name}</div>
-        {Object.values(workoutItem.sets).map(set => (
-          <div className="set">
+        {Object.values(workoutItem.sets).map((set, index1) => (
+          <div className="set" key="index1">
             <span>{set.set}set</span>
             <span>{set.weight}kg</span>
             <span>{set.reps}reps</span>
@@ -24,22 +24,44 @@ function TextWorkoutListBlock({ workoutItem }) {
 
 function RoutineBody({ routine }) {
   const [open, setOpen] = useState(false);
+  const [copyText, setCopyText] = useState("");
+  const [readonly, setReadonly] = useState(true);
   const [copyState, setCopyState] = useState({
-    value: "Sorry, This is under test.",
+    value: copyText,
     copied: false
   });
-  const onToggle = () => {
-    setOpen(!open);
+  const openPop = () => {
+    setOpen(true);
+    setCopyText(
+      (
+        routine.title +
+        "\n" +
+        routine.desc +
+        "\n" +
+        routine.createdAt +
+        "\n" +
+        Object.values(routine.workoutItems).map(
+          workoutItem =>
+            workoutItem.name +
+            "\n" +
+            Object.values(workoutItem.sets).map(
+              set => set.set + "set " + set.weight + "kg " + set.reps + "reps\n"
+            )
+        )
+      ).replace(/,/gi, "")
+    );
   };
   const closePop = () => {
     setOpen(false);
   };
   const onClick = ({ target: { innerHTML } }) => {
+    console.log(copyText);
     console.log(`Clicked on "${innerHTML}"!`); // eslint-disable-line
   };
-  const onCopy = () => {
-    setCopyState({ copied: true });
+  const onEdit = () => {
+    setReadonly(!readonly);
   };
+
   return (
     <>
       <WorkoutListBlock>
@@ -53,9 +75,8 @@ function RoutineBody({ routine }) {
             <Head>
               Today's Routine
               <CopyToClipboard
-                onCopy={onCopy}
                 // options={{ message: "Whoa!" }}
-                text={copyState.value}
+                text={copyText}
               >
                 <CopyButton onClick={onClick}>
                   <MdContentCopy />
@@ -63,30 +84,45 @@ function RoutineBody({ routine }) {
               </CopyToClipboard>
             </Head>
             <Body>
-              <div>{routine.title}</div>
+              <Textarea
+                // onClick={onEdit}
+                onChange={e => setCopyText(e.target.value)}
+                readOnly={readonly}
+                value={copyText}
+              />
+              {/* <div>{routine.title}</div>
               <div>{routine.desc}</div>
               {Object.values(routine.workoutItems).map((workoutItem, index) => (
                 <TextWorkoutListBlock key={index} workoutItem={workoutItem} />
-              ))}
+              ))} */}
             </Body>
           </Pop>
-
           {copyState.copied && <MessageBottom>Copied.</MessageBottom>}
         </DarkBackground>
       )}
-      <CircleButton onClick={onToggle}>
-        {open ? <MdArrowBack /> : <MdCheck />}
+      <CircleButton onClick={openPop}>
+        <MdCheck />
       </CircleButton>
     </>
   );
 }
+const Textarea = styled.textarea`
+  resize: none;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  font-size: 18px;
+  color: #343a40;
+`;
 const MessageBottom = styled.div`
   display: flex;
   align-items: center;
 
   width: 90%;
   position: absolute;
-  bottom: 100px;
+  bottom: -100px;
   left: 0;
   right: 0;
   margin-left: auto;
@@ -95,20 +131,17 @@ const MessageBottom = styled.div`
   border-radius: 10px;
   color: #fff;
   background: rgba(51, 51, 51, 0.7);
-  transition: 0.125s all ease-in;
-  animation-duration: 1s;
-  animation-name: slideUp;
-  animation-iteration-count: 1;
-  animation-direction: alternate;
-  @keyframes slideUp {
-    from {
-      opacity: 0.7;
-      transform: translate(0, 100px);
-    }
 
-    to {
+  opacity: 0.7;
+  animation-name: SlideUp;
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+
+  @keyframes SlideUp {
+    30%,
+    70% {
       opacity: 1;
-      transform: translate(0, 0);
+      bottom: 100px;
     }
   }
 `;
@@ -140,7 +173,7 @@ const DarkBackground = styled.div`
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 98;
+  z-index: 99;
   width: 100%;
   height: 100%;
   display: flex;
@@ -163,7 +196,9 @@ const Pop = styled.div`
 
   width: 80%;
   max-width: 512px;
-  height: 600px;
+  height: 80%;
+  min-height: 400px;
+  max-height: 600px;
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 20px;

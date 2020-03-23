@@ -49,36 +49,36 @@ const initialState = {
     createdAt: dateString,
     desc: "Description",
     workoutItems: {
-      squat: {
-        name: "squat",
-        sets: {
-          1: {
-            set: 1,
-            reps: 0,
-            weight: 0
-          },
-          2: {
-            set: 2,
-            reps: 0,
-            weight: 0
-          }
-        }
-      },
-      benchpress: {
-        name: "benchpress",
-        sets: {
-          1: {
-            set: 1,
-            reps: 0,
-            weight: 0
-          }
-          // 2: {
-          //   set: 2,
-          //   reps: 0,
-          //   weight: 0
-          // }
-        }
-      }
+      // squat: {
+      //   name: "squat",
+      //   sets: {
+      //     1: {
+      //       set: 1,
+      //       reps: 0,
+      //       weight: 0
+      //     },
+      //     2: {
+      //       set: 2,
+      //       reps: 0,
+      //       weight: 0
+      //     }
+      //   }
+      // },
+      // benchpress: {
+      //   name: "benchpress",
+      //   sets: {
+      //     1: {
+      //       set: 1,
+      //       reps: 0,
+      //       weight: 0
+      //     }
+      //     2: {
+      //       set: 2,
+      //       reps: 0,
+      //       weight: 0
+      //     }
+      //   }
+      // }
     }
   }
 };
