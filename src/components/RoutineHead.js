@@ -73,9 +73,7 @@ function RoutineHead({ routine }) {
         {routine.createdAt}
         <span className="day">{routine.dayName}</span>
       </h2>
-      <CreateWorkoutItemBlock
-        style={{ position: y > 224 ? "fixed" : "static" }}
-      >
+      <CreateWorkoutItemBlock style={{ position: y > 92 ? "fixed" : "static" }}>
         <CreateWorkoutItem onCreate={routine} />
       </CreateWorkoutItemBlock>
     </RoutineHeadBlock>
