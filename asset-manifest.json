@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/my_workout_report/static/css/main.9a512da8.chunk.css",
-    "main.js": "/my_workout_report/static/js/main.aa0bfecc.chunk.js",
-    "main.js.map": "/my_workout_report/static/js/main.aa0bfecc.chunk.js.map",
-    "runtime-main.js": "/my_workout_report/static/js/runtime-main.0f2b6be6.js",
-    "runtime-main.js.map": "/my_workout_report/static/js/runtime-main.0f2b6be6.js.map",
-    "static/js/2.d3fb3dd2.chunk.js": "/my_workout_report/static/js/2.d3fb3dd2.chunk.js",
-    "static/js/2.d3fb3dd2.chunk.js.map": "/my_workout_report/static/js/2.d3fb3dd2.chunk.js.map",
-    "index.html": "/my_workout_report/index.html",
-    "precache-manifest.1366cd9e3ace759b051e9b6186ef1e2e.js": "/my_workout_report/precache-manifest.1366cd9e3ace759b051e9b6186ef1e2e.js",
-    "service-worker.js": "/my_workout_report/service-worker.js",
-    "static/css/main.9a512da8.chunk.css.map": "/my_workout_report/static/css/main.9a512da8.chunk.css.map",
-    "static/js/2.d3fb3dd2.chunk.js.LICENSE.txt": "/my_workout_report/static/js/2.d3fb3dd2.chunk.js.LICENSE.txt"
+    "main.css": "/web_my_workout_report/static/css/main.9a512da8.chunk.css",
+    "main.js": "/web_my_workout_report/static/js/main.25696013.chunk.js",
+    "main.js.map": "/web_my_workout_report/static/js/main.25696013.chunk.js.map",
+    "runtime-main.js": "/web_my_workout_report/static/js/runtime-main.db74a82a.js",
+    "runtime-main.js.map": "/web_my_workout_report/static/js/runtime-main.db74a82a.js.map",
+    "static/js/2.3aee9c18.chunk.js": "/web_my_workout_report/static/js/2.3aee9c18.chunk.js",
+    "static/js/2.3aee9c18.chunk.js.map": "/web_my_workout_report/static/js/2.3aee9c18.chunk.js.map",
+    "index.html": "/web_my_workout_report/index.html",
+    "precache-manifest.b7a2133ba053d423e47d1fdeaf2e5d03.js": "/web_my_workout_report/precache-manifest.b7a2133ba053d423e47d1fdeaf2e5d03.js",
+    "service-worker.js": "/web_my_workout_report/service-worker.js",
+    "static/css/main.9a512da8.chunk.css.map": "/web_my_workout_report/static/css/main.9a512da8.chunk.css.map",
+    "static/js/2.3aee9c18.chunk.js.LICENSE.txt": "/web_my_workout_report/static/js/2.3aee9c18.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.0f2b6be6.js",
-    "static/js/2.d3fb3dd2.chunk.js",
+    "static/js/runtime-main.db74a82a.js",
+    "static/js/2.3aee9c18.chunk.js",
     "static/css/main.9a512da8.chunk.css",
-    "static/js/main.aa0bfecc.chunk.js"
+    "static/js/main.25696013.chunk.js"
   ]
 }
