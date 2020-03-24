@@ -33,13 +33,13 @@ function RoutineBody({ routine }) {
   const openPop = () => {
     setOpen(true);
     setCopyText(
+      // routine.title +
+      // "\n" +
+      // routine.desc +
+      // "\n" +
       (
-        routine.title +
-        "\n" +
-        routine.desc +
-        "\n" +
         routine.createdAt +
-        "\n" +
+        "\n\n" +
         Object.values(routine.workoutItems).map(
           workoutItem =>
             workoutItem.name +
@@ -47,7 +47,8 @@ function RoutineBody({ routine }) {
             Object.values(workoutItem.sets).map(
               set => set.set + "set " + set.weight + "kg " + set.reps + "reps\n"
             )
-        )
+        ) +
+        "\n"
       ).replace(/,/gi, "")
     );
   };
@@ -100,9 +101,11 @@ function RoutineBody({ routine }) {
           {copyState.copied && <MessageBottom>Copied.</MessageBottom>}
         </DarkBackground>
       )}
-      <CircleButton onClick={openPop}>
-        <MdCheck />
-      </CircleButton>
+      {Object.values(routine.workoutItems).length > 0 ? (
+        <CircleButton onClick={openPop}>
+          <MdCheck size="100%" />
+        </CircleButton>
+      ) : null}
     </>
   );
 }

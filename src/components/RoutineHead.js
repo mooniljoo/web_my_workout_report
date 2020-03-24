@@ -42,7 +42,7 @@ function RoutineHead({ routine }) {
   };
   return (
     <RoutineHeadBlock>
-      <RoutineHeadLine>
+      {/* <RoutineHeadLine>
         <Input
           type="text"
           value={title}
@@ -50,11 +50,11 @@ function RoutineHead({ routine }) {
           onMouseOver={test}
           readOnly={readonly}
         />
-        {/* {readonly ? (
+        {readonly ? (
           <MdEdit onClick={EditTitle} />
         ) : (
           <MdDone onClick={setReadOnly} />
-        )} */}
+        )}
       </RoutineHeadLine>
       <RoutineHeadLine>
         <Input
@@ -63,12 +63,12 @@ function RoutineHead({ routine }) {
           onChange={onChange}
           readOnly={readonly}
         />
-        {/* {readonly ? (
+        {readonly ? (
           <MdEdit onClick={EditTitle} />
         ) : (
           <MdDone onClick={setReadOnly} />
-        )} */}
-      </RoutineHeadLine>
+        )}
+      </RoutineHeadLine> */}
       <h2>
         {routine.createdAt}
         <span className="day">{routine.dayName}</span>
@@ -93,8 +93,10 @@ const CreateWorkoutItemBlock = styled.div`
   padding-bottom: 10px;
   border-bottom: 1px solid #e9ecef;
   background: #fff;
+  max-width: 512px;
 `;
 const Input = styled.input`
+  flex: 1;
   width: 100%;
   height: 100%;
   border: none;
