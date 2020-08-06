@@ -1,7 +1,18 @@
-# <진행중> my_workout_report
 
-This project was made with [Create React App](https://github.com/facebook/create-react-app).
+# my_workout_report
 
+[![made-with-react](https://img.shields.io/badge/Made%20with-React-1f425f.svg)](https://reactjs.org/)
+[![made-with-redux](https://img.shields.io/badge/Made%20with-Redux-1f425f.svg)](https://redux.js.org/)
+
+---
+
+<br/>
+
+## [문일주](https://github.com/mooniljoo)
+
+### [ [LinkedIn](https://www.linkedin.com/in/oneweek/) ] [ [Blog](https://mooniljoo.github.io/) ]
+
+---
 ## Goal
 
 #### Now In Progress
